@@ -8,8 +8,18 @@ export default {
     extend: {
       fontFamily: {
         poppins: '"Poppins", sans-serif',
-      }
+        old: '"UnifrakturCook", cursive'
+      },
+      colors : {
+        dark : {
+          300: '#9F9F9F',
+          400: '#706F6F',
+          500: '#444444',
+          600: '#403F3F'
+        },
+        
+      },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
