@@ -9,13 +9,17 @@ const ContextProvider = ({children}) => {
 
   const [user, setUser] = useState(null);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(()=> {
     const unsubscribe = onAuthStateChanged(auth, loggedUser => {
       if(loggedUser) {
         setUser(loggedUser);
+        setLoading(false);
         console.log('logged user: ', user);
       } else {
         setUser(null);
+        setLoading(true);
       }
     });
 
@@ -33,7 +37,7 @@ const ContextProvider = ({children}) => {
   const logOut = () => signOut(auth)
 
   return (
-    <authContext.Provider value={{user, auth, createUser, signIn, logOut}}>
+    <authContext.Provider value={{user, auth, createUser, signIn, logOut, loading}}>
       {children}
     </authContext.Provider>
   )

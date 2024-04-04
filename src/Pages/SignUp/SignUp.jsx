@@ -18,6 +18,7 @@ const SignUp = () => {
     .then (result => {
       console.log(result.user);
       updateProfile(auth.currentUser, {displayName: name});
+      
     })
     .catch(e => console.log(e))
   }

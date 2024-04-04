@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="size-12 rounded-full">
             <img src={userLogo} alt="" />
           </div>
-          <h1 className="text-2xl font-bold">{user?.displayName && ''}</h1>
+          <h1 className="text-2xl font-bold">{user?.displayName ? user.displayName : ''}</h1>
           <Link to={!user && '/login'} onClick={() =>{
             logOut()
             .then(() => console.log('logged out'))

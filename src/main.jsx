@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login.jsx';
 import SignUp from './Pages/SignUp/SignUp.jsx';
 import ContextProvider from './Pages/ContextProvider.jsx';
 import News from './Pages/News/News.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/news/:id',
-    element: <News/>,
+    element: <PrivateRoute><News/></PrivateRoute>,
     loader: (params) => fetch('/public/data/news.json')
   }
 ])
