@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import user from '../../../assets/user.png'
+import userLogo from '../../../assets/user.png'
+import { useContext } from "react";
+import { authContext } from "../../ContextProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(authContext);
+
   const links = (
     <>
-      <Link>
+      <Link to='/'>
         <a className="font-poppins text">Home</a>
       </Link>
       <Link>
@@ -52,9 +56,15 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-4">
           <div className="size-12 rounded-full">
-            <img src={user} alt="" />
+            <img src={userLogo} alt="" />
           </div>
-          <a className="btn bg-dark-600 text-white px-6 rounded-none">Login</a>
+          <h1 className="text-2xl font-bold">{user?.displayName && ''}</h1>
+          <Link to={!user && '/login'} onClick={() =>{
+            logOut()
+            .then(() => console.log('logged out'))
+            .catch(e => console.log('logged out err: ', e))
+            
+          }} className="btn bg-dark-600 text-white px-6 rounded-none">{user ? 'Log out' : 'Login'}</Link>
         </div>
       </div>
     </div>

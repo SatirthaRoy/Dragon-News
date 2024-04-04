@@ -17,8 +17,10 @@ const [categories, setCategories] = useState([]);
       {
         categories.map(data => {
           return (
-            <NavLink className='hover:bg-gray-200 hover:text-dark-500 rounded-lg p-4 w-full text-dark-300 font-medium text-xl cursor-pointer' key={data.id}>
-              <h1>{data.name}</h1>
+            <NavLink key={data.id}>
+              <div className='hover:bg-gray-200 hover:text-dark-500 rounded-lg p-4 w-full text-dark-300 font-medium text-xl cursor-pointer' >
+                <h1>{data.name}</h1>
+              </div>
             </NavLink>
           )
         })
